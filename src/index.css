@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* This is where you define custom Ishaara brand styles */
+  --font-fresh: "Fresh Script", cursive;
+  --color-ishaara-primary: #3b82f6;
+  
+  /* You can also add custom spacing or breakpoints here */
+}
+
+/* Hide scrollbar but keep scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+.animate-wave {
+  animation: wave 1s infinite ease-in-out;
+}
+
+@theme inline {
+  --animate-ripple: ripple var(--duration, 2s) ease
+    calc(var(--i, 0) * 0.2s) infinite;
+
+  @keyframes ripple {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(0.9);
+      opacity: 0.3;
+    }
+  }
+}
+
+/* 👇 THIS IS REQUIRED */
+.animate-ripple {
+  animation: var(--animate-ripple);
+}
+
+@theme {
+  /* We call it 'font-ishaara' or 'font-fresh' to keep it easy */
+  --font-ishaara: "Kaushan Script", cursive;
+}
