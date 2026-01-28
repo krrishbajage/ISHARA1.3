@@ -6,7 +6,11 @@ export default function CameraBox() {
   useEffect(() => {
     async function startCamera() {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "user" }
+        video: {
+          width: { exact: 640 },
+          height: { exact: 480 },
+          facingMode: "user"
+        }
       });
 
       if (videoRef.current) {
@@ -22,7 +26,7 @@ export default function CameraBox() {
       ref={videoRef}
       autoPlay
       playsInline
-      className="w-full h-full object-cover rounded-xl scale-x-[-1]"
+      className="w-full h-full object-cover scale-x-[-1]"
     />
   );
 }

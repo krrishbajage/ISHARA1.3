@@ -1,3 +1,12 @@
+html,body,#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -52,4 +61,12 @@
 @theme {
   /* We call it 'font-ishaara' or 'font-fresh' to keep it easy */
   --font-ishaara: "Kaushan Script", cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
 }
