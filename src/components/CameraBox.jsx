@@ -4,21 +4,25 @@ export default function CameraBox() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then((stream) => {
-        videoRef.current.srcObject = stream;
+    async function startCamera() {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "user" }
       });
+
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+    }
+
+    startCamera();
   }, []);
 
   return (
-    <div className="w-full h-[300px] bg-black rounded-xl overflow-hidden">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        className="w-full h-full object-cover"
-      />
-    </div>
+    <video
+      ref={videoRef}
+      autoPlay
+      playsInline
+      className="w-full h-full object-cover rounded-xl scale-x-[-1]"
+    />
   );
 }
