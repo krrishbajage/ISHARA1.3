@@ -7,7 +7,7 @@ export default function CameraBox() {
     async function startCamera() {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          width: { exact: 640 },
+          width: { exact: 700 },
           height: { exact: 480 },
           facingMode: "user"
         }

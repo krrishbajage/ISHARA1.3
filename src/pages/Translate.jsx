@@ -57,7 +57,7 @@ export default function Translate() {
           <div className="w-full max-w-6xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col p-6">
 
               {/* 🔥 Shared Preview Window */}
-              <div className="w-[640px] h-[480px] mx-auto rounded-xl bg-black/60 mb-2 flex items-center justify-center overflow-hidden relative">
+              <div className="w-[700px] h-[480px] mx-auto rounded-xl bg-black/60 mb-2 flex items-center justify-center overflow-hidden relative">
 
                 {/* CAMERA VIEW */}
                 {isCameraOn && (
