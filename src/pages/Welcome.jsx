@@ -1,35 +1,3 @@
-// import { useNavigate } from "react-router-dom";
-// import user from "../assets/sign.png";
-
-// export default function Welcome() {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div className="min-h-screen bg-gradient-to-br from-[#050b1e] to-[#0a1335] text-white flex flex-col items-center justify-center">
-      
-//       <h1 className="text-6xl font-serif mb-4">Ishaara</h1>
-//       <p className="tracking-widest text-cyan-400 mb-8">BRIDGING WORLDS</p>
-
-//       <button
-//         onClick={() => navigate("/translate")}
-//         className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
-//       >
-//         Get Started
-//       </button>
-
-//       {/* Team */}
-//       <div className="mt-12 flex gap-6">
-//         {[1, 2, 3, 4].map((i) => (
-//           <div key={i} className="bg-white/10 p-4 rounded-xl text-center">
-//             <img src={user} className="w-20 h-20 rounded-full mx-auto" />
-//             <p className="mt-2 text-sm">Team Member</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
 
 import { useNavigate } from "react-router-dom";
 
@@ -47,7 +15,7 @@ export default function Welcome() {
 
       {/* Title */}
       <h1 className="text-4xl font-ishaara text-white tracking-wide">
-    Ishara
+    ISHARA
   </h1>
       <p className="tracking-widest text-cyan-400 mb-10">
         BRIDGING WORLDS

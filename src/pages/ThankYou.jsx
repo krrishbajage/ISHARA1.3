@@ -5,8 +5,8 @@ export default function ThankYou() {
 
   return (
     <div className="w-screen min-h-screen bg-[#050b1e] flex flex-col items-center justify-center text-white">
-      <h1 className="text-5xl font-serif mb-4">Thank You!</h1>
-      <p className="mb-6 text-white/70">For using Ishara</p>
+      <h1 className="text-5xl font-serif mb-4">THANK YOU !</h1>
+      <p className="mb-6 text-white/70">FOR USING ISHARA</p>
 
       <button
         onClick={() => navigate("/")}
