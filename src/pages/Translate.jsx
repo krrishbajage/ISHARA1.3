@@ -12,6 +12,7 @@ import { Ripple } from "../components/ui/Ripple";
 
 import CameraBox from "../components/CameraBox";
 import { Vortex } from "../components/ui/vortex";
+import logo from "../assets/ishara-logo.png";
 
 export default function Translate() {
   const [inputText, setInputText] = useState("");
@@ -41,9 +42,18 @@ export default function Translate() {
 
           {/* Header */}
           <div className="flex justify-between items-center mb-0">
-            <h1 className="text-4xl font-ishaara text-white tracking-wide">
-    ISHARA
-  </h1>
+            <div className="flex items-center gap-3">
+              <div className="relative h-9 w-9 rounded-2xl overflow-hidden border border-cyan-400/40 bg-gradient-to-br from-cyan-500/40 via-purple-500/30 to-pink-500/30 shadow-lg shadow-cyan-500/40">
+                <img
+                  src={logo}
+                  alt="Ishara logo"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <h1 className="text-4xl font-ishaara text-white tracking-wide">
+                ISHARA
+              </h1>
+            </div>
             <button
               onClick={() => navigate("/thankyou")}
               className="flex items-center gap-2 bg-red-500/90 hover:bg-red-600 px-5 py-2 rounded-full"
