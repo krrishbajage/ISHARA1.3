@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { Vortex } from "../components/ui/vortex"; // Keep if you decide to switch back, otherwise unused
 import { NoiseBackground } from "../components/ui/noise-background";
 import { motion } from "motion/react";
-import { Globe } from "../components/ui/globe";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import Navbar from "../components/Navbar";
+import SignCylinder from "../components/ui/SignCylinder";
 
 export default function Welcome() {
   const navigate = useNavigate();
@@ -12,37 +12,26 @@ export default function Welcome() {
   return (
     // FIXED: Using min-h-screen ensures full viewport coverage
     // overflow-hidden prevents scrollbars while maintaining the background
-    <div className="relative w-full min-h-screen bg-black overflow-hidden">
+    <div className="relative w-full min-h-screen bg-gradient-to-br from-[#0b021f] via-[#050014] to-[#020617] overflow-hidden">
       
       {/* Background Layer - Now properly fills the entire viewport */}
-      <BackgroundBeamsWithCollision className="absolute inset-0 min-h-screen w-full bg-black z-0">
-        
-        {/* 🌍 Globe Layer */}
-        {/* Adjusted positioning to ensure globe stays visible and properly positioned */}
-        <div
+      <BackgroundBeamsWithCollision className="absolute inset-0 min-h-screen w-full bg-gradient-to-b from-[#12012e] via-[#050017] to-[#020617] z-0">
+        {/* Soft ambient glows */}
+        <div className="pointer-events-none absolute -left-40 bottom-[-10%] h-[480px] w-[480px] rounded-full bg-violet-500/25 blur-3xl" />
+        <div className="pointer-events-none absolute -right-56 top-[5%] h-[420px] w-[420px] rounded-full bg-fuchsia-500/24 blur-3xl" />
+
+        {/* 3D Sign Language Cylinder Layer */}
+        <SignCylinder
           className="
-            pointer-events-none
             absolute
             z-[1]
-            top-[-20%]
-            right-[-5%]
-            w-[600px] md:w-[800px]
-            h-[600px] md:h-[800px]
-            opacity-50 
+            top-[-6%]
+            right-[-20%]
+            w-[420px] md:w-[520px]
+            h-[520px] md:h-[620px]
+            opacity-70
           "
-        >
-          {/* Glow effect behind globe */}
-          <div
-            className="
-              absolute
-              inset-0
-              rounded-full
-              bg-cyan-500/20
-              blur-[100px] 
-            "
-          />
-          <Globe className="w-full h-full " />
-        </div>
+        />
       </BackgroundBeamsWithCollision>
 
       {/* Content Wrapper - properly sized to fill viewport */}
