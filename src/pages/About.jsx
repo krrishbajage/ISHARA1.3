@@ -5,7 +5,8 @@ import jay from "../assets/credits/jayDhandhukia.jpg";
 import jitesh from "../assets/credits/jiteshKarale.jpg";
 import Navbar from "../components/Navbar";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
-import { Camera, MessageCircle, Mic, Eye } from "lucide-react";
+import { Camera, MessageCircle, Mic, Eye, Hand, BrainCircuit, Sparkles, Waves, Globe2, Scan, Cpu } from "lucide-react";
+import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 
 export default function About() {
   const team = [
@@ -138,19 +139,147 @@ export default function About() {
               </p>
             </div>
 
-            {/* Simple illustration */}
-            <div className="relative flex items-center justify-center">
-              <div className="absolute -inset-10 rounded-[40px] bg-gradient-to-br from-cyan-500/20 via-purple-500/15 to-sky-500/10 blur-3xl opacity-70" />
-              <div className="relative h-40 w-40 md:h-52 md:w-52 rounded-full bg-[#050013] border border-white/10 flex items-center justify-center shadow-[0_0_80px_rgba(34,211,238,0.45)]">
-                <div className="absolute inset-6 rounded-full border border-white/15" />
-                <div className="absolute inset-10 rounded-full bg-gradient-to-br from-cyan-500/50 via-purple-500/40 to-sky-400/40 opacity-70" />
-                <span className="relative text-xs uppercase tracking-[0.2em] text-white/80">
+            {/* Orbiting circles illustration */}
+            <div className="relative flex items-center justify-center h-[280px] md:h-[360px] w-full">
+              {/* Outer glow - soft and subtle */}
+              <div className="absolute -inset-10 rounded-[40px] bg-gradient-to-br from-cyan-500/10 via-purple-500/8 to-sky-500/5 blur-3xl opacity-50 -z-10" />
+              
+              {/* Soft gradient backdrop behind center circle */}
+              <div className="absolute inset-0 flex items-center justify-center -z-5">
+                <div className="w-56 h-56 md:w-72 md:h-72 rounded-full bg-gradient-to-br from-cyan-500/5 via-purple-500/10 to-transparent blur-2xl" />
+              </div>
+              
+              {/* Center circle with text - softened edges */}
+              <div className="relative z-10 h-40 w-40 md:h-52 md:w-52 rounded-full border border-white/5 flex items-center justify-center">
+                {/* Soft inner glow instead of harsh background */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#0a0520]/90 via-[#0d0728]/95 to-[#050013]/100 backdrop-blur-sm" />
+                
+                {/* Inner rings for depth */}
+                <div className="absolute inset-6 rounded-full border border-white/10" />
+                <div className="absolute inset-10 rounded-full bg-gradient-to-br from-cyan-500/30 via-purple-500/25 to-sky-400/20 opacity-50 blur-xl" />
+                
+                {/* Text */}
+                <span className="relative z-10 text-xs uppercase tracking-[0.2em] text-white/80 text-center px-2">
                   From Silence
                   <br />
                   To Connection
                 </span>
               </div>
+
+              {/* Inner ring - 4 icons */}
+              <OrbitingCircles
+                className="z-20"
+                radius={90}
+                duration={25}
+                path={false}
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-sm shadow-lg">
+                  <Hand className="h-5 w-5 text-cyan-300" />
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/20 border border-purple-400/40 backdrop-blur-sm shadow-lg">
+                  <Mic className="h-5 w-5 text-purple-300" />
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 border border-emerald-400/40 backdrop-blur-sm shadow-lg">
+                  <Camera className="h-5 w-5 text-emerald-300" />
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-500/20 border border-sky-400/40 backdrop-blur-sm shadow-lg">
+                  <MessageCircle className="h-5 w-5 text-sky-300" />
+                </div>
+              </OrbitingCircles>
+
+              {/* Middle ring - 6 icons */}
+              <OrbitingCircles
+                className="z-20"
+                radius={130}
+                duration={35}
+                reverse={true}
+                path={false}
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-violet-500/20 border border-violet-400/40 backdrop-blur-sm shadow-lg">
+                  <BrainCircuit className="h-4 w-4 text-violet-300" />
+                </div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-pink-500/20 border border-pink-400/40 backdrop-blur-sm shadow-lg">
+                  <Sparkles className="h-4 w-4 text-pink-300" />
+                </div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-sm shadow-lg">
+                  <Waves className="h-4 w-4 text-cyan-300" />
+                </div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-500/20 border border-indigo-400/40 backdrop-blur-sm shadow-lg">
+                  <Globe2 className="h-4 w-4 text-indigo-300" />
+                </div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-teal-500/20 border border-teal-400/40 backdrop-blur-sm shadow-lg">
+                  <Scan className="h-4 w-4 text-teal-300" />
+                </div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-500/20 border border-blue-400/40 backdrop-blur-sm shadow-lg">
+                  <Cpu className="h-4 w-4 text-blue-300" />
+                </div>
+              </OrbitingCircles>
+
+              {/* Outer ring - 8 icons */}
+              <OrbitingCircles
+                className="z-20"
+                radius={170}
+                duration={45}
+                path={false}
+              >
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 border border-emerald-400/30 backdrop-blur-sm shadow-lg">
+                  <Eye className="h-3.5 w-3.5 text-emerald-300" />
+                </div>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/15 border border-cyan-400/30 backdrop-blur-sm shadow-lg">
+                  <Hand className="h-3.5 w-3.5 text-cyan-300" />
+                </div>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/15 border border-purple-400/30 backdrop-blur-sm shadow-lg">
+                  <Mic className="h-3.5 w-3.5 text-purple-300" />
+                </div>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-pink-500/15 border border-pink-400/30 backdrop-blur-sm shadow-lg">
+                  <MessageCircle className="h-3.5 w-3.5 text-pink-300" />
+                </div>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-500/15 border border-violet-400/30 backdrop-blur-sm shadow-lg">
+                  <Camera className="h-3.5 w-3.5 text-violet-300" />
+                </div>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500/15 border border-indigo-400/30 backdrop-blur-sm shadow-lg">
+                  <BrainCircuit className="h-3.5 w-3.5 text-indigo-300" />
+                </div>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-500/15 border border-sky-400/30 backdrop-blur-sm shadow-lg">
+                  <Sparkles className="h-3.5 w-3.5 text-sky-300" />
+                </div>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-500/15 border border-teal-400/30 backdrop-blur-sm shadow-lg">
+                  <Waves className="h-3.5 w-3.5 text-teal-300" />
+                </div>
+              </OrbitingCircles>
+
+              {/* Custom visible rings overlaid */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-[15]" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <circle 
+                  cx="200" 
+                  cy="200" 
+                  r="90" 
+                  fill="none" 
+                  stroke="rgba(34, 211, 238, 0.3)" 
+                  strokeWidth="1"
+                  className="drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+                />
+                <circle 
+                  cx="200" 
+                  cy="200" 
+                  r="130" 
+                  fill="none" 
+                  stroke="rgba(168, 85, 247, 0.25)" 
+                  strokeWidth="1"
+                  className="drop-shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+                />
+                <circle 
+                  cx="200" 
+                  cy="200" 
+                  r="170" 
+                  fill="none" 
+                  stroke="rgba(56, 189, 248, 0.2)" 
+                  strokeWidth="1"
+                  className="drop-shadow-[0_0_20px_rgba(56,189,248,0.15)]"
+                />
+              </svg>
             </div>
+            
           </section>
 
           {/* How It Works */}

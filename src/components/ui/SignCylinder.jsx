@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, useAnimationFrame, useMotionValue } from "motion/react";
+import { motion, useAnimationFrame } from "motion/react";
 import {
   Hand,
   HelpingHand,
@@ -30,23 +30,18 @@ const ITEMS = [
   { id: 12, icon: Eye, label: "Seen Clearly" },
 ];
 
-const RADIUS = 230; // distance from center
-const VERTICAL_GAP = 90; // vertical distance between items
+const RADIUS = 230; // tighter radius so it doesn't overlap hero
+const VERTICAL_GAP = 80; // small gap so items form a continuous ribbon
 const SPIRAL_HEIGHT = ITEMS.length * VERTICAL_GAP; // height of one full loop
 const SCROLL_SPEED = 12; // px per second (slow, smooth)
-const AUTO_ROTATE_SPEED = 12; // degrees per second
 
 export default function SignCylinder({ className = "" }) {
   const [offset, setOffset] = useState(0);
-  const [isInteracting, setIsInteracting] = useState(false);
-  const rotateY = useMotionValue(0);
 
-  // Drive continuous auto-scroll & rotation when not interacting.
+  // Drive a continuous upward scroll using time-based animation.
   useAnimationFrame((t, delta) => {
-    if (isInteracting) return;
-    const dt = delta / 1000; // seconds
-    setOffset((prev) => prev + dt * SCROLL_SPEED);
-    rotateY.set(rotateY.get() + dt * AUTO_ROTATE_SPEED);
+    // delta is in milliseconds; convert to seconds and multiply by speed
+    setOffset((prev) => prev + (delta / 1000) * SCROLL_SPEED);
   });
 
   return (
@@ -54,25 +49,19 @@ export default function SignCylinder({ className = "" }) {
       className={`relative ${className}`}
       style={{ perspective: "1200px", background: "transparent" }}
     >
-      {/* 3D rotating helix with upward spiral and slightly tilted axis */}
+      {/* 3D rotating helix with upward spiral and slightly tilted vertical axis */}
       <motion.div
+        initial={{ rotateY: 0, rotateX: 10, rotateZ: -6 }}
+        animate={{ rotateY: 360, rotateX: 10, rotateZ: -6 }}
+        transition={{
+          duration: 30,
+          ease: "linear",
+          repeat: Infinity,
+        }}
         style={{
           transformStyle: "preserve-3d",
-          rotateY,
-          rotateX: 10,
-          rotateZ: -6,
         }}
         className="relative h-full w-full"
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        onHoverStart={() => setIsInteracting(true)}
-        onHoverEnd={() => setIsInteracting(false)}
-        onDragStart={() => setIsInteracting(true)}
-        onDragEnd={() => setIsInteracting(false)}
-        onDrag={(event, info) => {
-          // Map horizontal drag distance to rotation degrees
-          rotateY.set(rotateY.get() + info.delta.x * 0.4);
-        }}
       >
         {ITEMS.map((item, index) => {
           const Icon = item.icon;
@@ -91,7 +80,7 @@ export default function SignCylinder({ className = "" }) {
           return (
             <div
               key={item.id}
-              className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center gap-1.5"
+              className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 text-center"
               style={{
                 transform: `
                   rotateY(${angle}deg)
@@ -101,9 +90,9 @@ export default function SignCylinder({ className = "" }) {
                 transformStyle: "preserve-3d",
               }}
             >
-              <div className="flex min-w-[230px] max-w-[260px] flex-col items-center gap-1.5 rounded-2xl bg-gradient-to-b from-cyan-500/16 via-violet-500/12 to-transparent px-5 py-3 backdrop-blur-xl border-y border-cyan-200/35 shadow-[0_0_26px_rgba(56,189,248,0.35)]">
-                <Icon className="h-11 w-11 md:h-14 md:w-14 text-white/90 drop-shadow-[0_0_18px_rgba(15,23,42,0.75)]" />
-                <span className="text-[11px] md:text-xs text-cyan-200 drop-shadow-[0_0_14px_rgba(34,211,238,0.9)] tracking-[0.24em] uppercase">
+              <div className="flex min-w-[240px] max-w-[280px] flex-col items-center gap-1.5 rounded-2xl bg-gradient-to-b from-cyan-500/12 via-violet-500/10 to-transparent px-5 py-3 backdrop-blur-xl border-y border-cyan-300/30 shadow-[0_0_24px_rgba(56,189,248,0.35)]">
+                <Icon className="h-9 w-9 md:h-11 md:w-11 text-white/90" />
+                <span className="text-[11px] md:text-xs text-cyan-200 drop-shadow-[0_0_14px_rgba(34,211,238,0.9)] tracking-[0.22em] uppercase">
                   {item.label}
                 </span>
               </div>

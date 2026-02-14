@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import Navbar from "../components/Navbar";
 import SignCylinder from "../components/ui/SignCylinder";
+import TypewriterEffect from "../components/ui/TypewriterEffect";
 
 export default function Welcome() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export default function Welcome() {
         {/* 3D Sign Language Cylinder Layer */}
         <SignCylinder
           className="
+            pointer-events-none
             absolute
             z-[1]
             top-[-6%]
@@ -38,36 +40,38 @@ export default function Welcome() {
       <div className="absolute inset-0 z-10 overflow-hidden">
         <Navbar />
 
-        <div className="flex flex-col items-center justify-center min-h-screen px-6 pt-28 pb-12 md:pr-[500px]">
+        <div className="flex flex-col items-start justify-center min-h-screen px-6 pt-28 pb-12 md:pl-20 md:pr-[520px]">
           
           {/* Logo & Tagline Section */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-6"
+            className="mb-6 max-w-2xl"
           >
-            <h1 className="text-6xl md:text-7xl font-ishaara text-white tracking-wide mb-3">
+            <h1 className="text-6xl md:text-8xl font-ishaara tracking-wide mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-cyan-300 via-sky-400 via-violet-400 to-pink-400 aurora-text">
               ISHARA
             </h1>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-lg md:text-xl tracking-[0.3em] text-cyan-400 font-light"
+              className="text-lg md:text-2xl tracking-[0.35em] text-cyan-300 font-light"
             >
               BRIDGING WORLDS
             </motion.p>
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45, duration: 0.8 }}
-              className="text-base md:text-lg text-neutral-300 max-w-lg mt-4 mb-8 leading-relaxed mx-auto"
+              className="max-w-xl mt-5 mb-10 leading-relaxed text-neutral-300"
             >
-              Break the silence barrier with real-time AI. Translate Indian Sign
-              Language to speech and text instantly—no special hardware
-              required.
-            </motion.p>
+              <TypewriterEffect
+                text="Break the silence barrier with real-time AI. Translate Indian Sign Language to speech and text instantly."
+                speed={35}
+                className="text-base md:text-lg text-neutral-300"
+              />
+            </motion.div>
           </motion.div>
 
           {/* Get Started Button */}
